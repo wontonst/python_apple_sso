@@ -1,3 +1,24 @@
+## Basic Usage
+
+Once the client has obtained a code from apple, you can use this
+module to get the users's id token.
+
+
+```
+from apple_sso import get_id_token, deserialize_id_token
+payload = get_id_token(
+    YOUR APPLE SSO CLIENT ID,
+    YOUR APPLE TEAM ID,
+    YOUR APPLE PRIVATE KEY ID,
+    YOUR APPLE PRIVATE KEY CONTENTS),
+    code,  # the code Apple gave you to authenticate with
+    redirect_uri  # the redirect uri you gave Apple
+)
+
+id_token = deserialize_id_token(payload['id_token'], client_id)
+```
+
+## Error Handling
 
 The primary source of error is in verifying the code
 with Apple. When this occurs, the module raises a
